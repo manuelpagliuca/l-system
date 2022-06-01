@@ -181,9 +181,9 @@ MonoBehaviour:
   treeModel: F*[[XFL]*XFL]*F[*FXFL]*X
   rootModel: R[*X][*X]*R*[X]
   freeEditing: 0
-  treePredefinedSets: 3
+  treePredefinedSets: 0
   rootPredefinedSets: 0
-  treeIterations: 6
+  treeIterations: 3
   initialLength: 1
   branch: {fileID: 5318667780185657261, guid: d485e262752873b4e943dac2f8dbf6ce, type: 3}
   leaf: {fileID: 7446031283100180761, guid: f39ee82d15464a6489bcec3946686154, type: 3}
