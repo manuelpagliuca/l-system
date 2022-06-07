@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum StartingTreeSet { First, Second, Third, Fourth };
-public enum StartingRootSet { First };
+public enum StartingRootSet { First, Second };
 public struct TransformInfo
 {
     public Vector3 position;
@@ -31,15 +31,16 @@ public class LSystemGenerator : MonoBehaviour
     /// Tree predefined models
     private static Dictionary<int, string> treePredefinedModels = new Dictionary<int, string>
     {
-        {0, "F[[X[FL]]*X[FL]]*F[*FX[FL]]*X"},
-        {1, "F[*X[FL]]F[*X[FL]]*X"},
+        {0, "F[*X[FL]]F[*X[FL]]*X"},
+        {1, "F[[X[F]]*X[F]]*F[*FX[FL]]*X"},
         {2, "F[*X][*X]" },
         {3, "F[*X[FL]][*X[FL]]" }
     };
 
     private static Dictionary<int, string> rootPredefinedModels = new Dictionary<int, string>
     {
-        {0, "R[*X][*X]*R*[X]"}
+        {0, "R[*X][*X]*R*[X]"},
+        {1, "R[*X]*[*RX]*R*X"},
     };
 
     /// Inspector variables
@@ -150,7 +151,7 @@ public class LSystemGenerator : MonoBehaviour
         State state = new State();
         state.length = bufferedData.initialLength - SEGMENT_LENGTH_DECR;
         state.renderWidths.start = SEGMENT_INITIAL_WIDTH;
-        state.renderWidths.end = SEGMENT_INITIAL_WIDTH; 
+        state.renderWidths.end = SEGMENT_INITIAL_WIDTH;
 
         stateStack.Push(state);
 
@@ -264,7 +265,7 @@ public class LSystemGenerator : MonoBehaviour
     public void RotateRnd()
     {
         int toss = Random.Range(0, 4);
-        float angle = Random.Range(10f, 30f);
+        float angle = Random.Range(10f, 35f);
 
         switch (toss)
         {
@@ -364,7 +365,7 @@ public class LSystemGenerator : MonoBehaviour
 
     private bool CheckChangesInParams()
     {
-        return  treeModel != bufferedData.treeSet ||
+        return treeModel != bufferedData.treeSet ||
                 rootModel != bufferedData.rootSet ||
                 treeIterations != bufferedData.iterations ||
                 initialLength != bufferedData.initialLength ||
@@ -400,6 +401,10 @@ public class LSystemGenerator : MonoBehaviour
         {
             case StartingRootSet.First:
                 rootModel = rootPredefinedModels[0];
+                break;
+
+            case StartingRootSet.Second:
+                rootModel = rootPredefinedModels[1];
                 break;
         }
     }
