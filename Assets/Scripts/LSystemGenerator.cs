@@ -89,7 +89,7 @@ public class LSystemGenerator : MonoBehaviour
     private readonly int MAX_ROOTS_ITERATIONS = 4;
     private readonly float TERRAIN_LOWER_BOUND = -1.0f;
     private readonly float SEGMENT_INITIAL_WIDTH = 0.1f;
-    private readonly float SEGMENT_WIDTH_DECR = 0.0099f;
+    private readonly float SEGMENT_WIDTH_DECR = 0.013f;
     private readonly float SEGMENT_LENGTH_DECR = 0.01f;
 
     // Gameobject nodes for the branches and root lists
