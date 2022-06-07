@@ -48,7 +48,7 @@ point of view. You will be able to move your position as The in-game usable hotk
 ![text](gifs/Movements.gif)
 
 Once the application is started, it is possible to play with the Inspector for making changes occurs on the
-running application (not all the fields are editable when the game is running).
+running application (not all the fields are editable when the game is running). If any of the following three fields are changed, a tree regeneration is triggered.
 
 ## Randomness
 The application produces always a random tree using pseudo-random numbers for the orientation of branches and roots.
@@ -57,18 +57,18 @@ The application produces always a random tree using pseudo-random numbers for th
 ## Inspector (Origin GameObject)
 ### Changing sets
 There are four predefined models (or sets) to use, they are editable only if the "**Free Editing**" flag is checked, otherwise they won't change (and will be restored to the precedent model/set whenever you will click on something else).
-
-* *The root starting set is always editable*
+* Now there are present also two models for the roots.
 
 ![text](gifs/ChangingSets.gif)
 
-### Iterations and branch lengths
-The overall tree iterations (number of derivations) and branch lengths are editable through a slider that works on the discrete interval [1,6], for the iterations, and on the continuos interval [0.01,1.0] for the branch length.
+### Iterations and segment lengths
+The overall tree iterations (number of derivations) and segment lengths (both branches and roots) are editable through a slider that works on the discrete interval [1,6], for the iterations, and on the continuos interval [0.01,1.0] for the branch length.
 
 ![text](gifs/Iterations.gif)
 
 ### Free Style editing
 Without checking this flag is not possible to make the "real-time" editing of the predefined set.
+* Now there is also the possibility to free-style edit the root set.
 
 ![text](gifs/FreeStyle.gif)
 
