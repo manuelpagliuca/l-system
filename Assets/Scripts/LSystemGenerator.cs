@@ -44,6 +44,7 @@ public class LSystemGenerator : MonoBehaviour
     };
 
     /// Inspector variables
+    [SerializeField] public int seed = 1;
     [SerializeField] public string treeModel = treePredefinedModels[3];
     [SerializeField] public string rootModel = rootPredefinedModels[0];
     [SerializeField] public bool freeEditing = false;
@@ -61,8 +62,9 @@ public class LSystemGenerator : MonoBehaviour
     {
         public string treeSet, rootSet;
         public int iterations;
+        public int seed;
         public float initialLength;
-        public GameObject branch, leaf;
+       public GameObject branch, leaf;
     };
     LSystemBufferedData bufferedData;
 
@@ -90,12 +92,13 @@ public class LSystemGenerator : MonoBehaviour
     private readonly int MAX_ROOTS_ITERATIONS = 4;
     private readonly float TERRAIN_LOWER_BOUND = -1.0f;
     private readonly float SEGMENT_INITIAL_WIDTH = 0.1f;
-    private readonly float SEGMENT_WIDTH_DECR = 0.013f;
+    private readonly float SEGMENT_WIDTH_DECR = 0.03f;
     private readonly float SEGMENT_LENGTH_DECR = 0.01f;
 
     // Gameobject nodes for the branches and root lists
     private GameObject nodeBranches;
     private GameObject nodeRoots;
+    
 
     /* Function executed before the Start(), it sets the deriver and
      * it created the main nodes for the branches and the roots. */
@@ -133,12 +136,15 @@ public class LSystemGenerator : MonoBehaviour
             roots.Clear();
             ResetOriginPosition();
             Start();
+            Random.InitState(bufferedData.seed);
         }
     }
 
     private void Start()
     {
         BufferLSData();
+
+        Random.InitState(seed);
 
         // Initialize the data structures
         treeRules = new Dictionary<char, string> { { AXIOM, bufferedData.treeSet } };
@@ -173,6 +179,7 @@ public class LSystemGenerator : MonoBehaviour
         bufferedData.initialLength = initialLength;
         bufferedData.branch = branch;
         bufferedData.leaf = leaf;
+        bufferedData.seed = seed;
     }
 
     private void AssignBranchesAndRootsNodes()
@@ -370,7 +377,8 @@ public class LSystemGenerator : MonoBehaviour
                 treeIterations != bufferedData.iterations ||
                 initialLength != bufferedData.initialLength ||
                 branch != bufferedData.branch ||
-                leaf != bufferedData.leaf;
+                leaf != bufferedData.leaf ||
+                seed != bufferedData.seed;
     }
 
     private void SelectPredefinedTree()

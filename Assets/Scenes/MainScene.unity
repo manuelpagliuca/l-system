@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3339d2451e40824ebf4f7049a75541e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 1
   treeModel: F*[[XFL]*XFL]*F[*FXFL]*X
   rootModel: R[*X][*X]*R*[X]
   freeEditing: 0
