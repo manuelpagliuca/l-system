@@ -23,11 +23,11 @@ The development of the project was feasible thanks to the following tools :
 - Microsoft Visual C++ 2019
 - Git and GitHub
 - Overleaf (for the drafting [report](/L_SYSTEM_AI4V_REPORT.pdf))
-- ScreenToGif (gif files in `\gifs`)
+- ScreenToGif (gif files in `/gifs`)
 
 ## Externals
 For the external assets I have created a folder called **Import**, which is placed under
-the directory `Assets\Import` (it is ignored with his relative meta file).
+the directory `Assets/Import` (it is ignored with his relative meta file).
 
 ### Assets
 - [Hand Painted Grass Texture](https://assetstore.unity.com/packages/2d/textures-materials/floors/hand-painted-grass-texture-78552)
@@ -51,10 +51,15 @@ Once the application is started, it is possible to play with the Inspector for m
 running application (not all the fields are editable when the game is running). If any of the following three fields are changed, a tree regeneration is triggered.
 
 ## Randomness
-The application produces always a random tree using pseudo-random numbers for the orientation of branches and roots.
-- *Possible extra feature could a toggle that enables/disables the randomness.*
+The application produces always a random tree using pseudo-random numbers for the orientation of branches and roots. Both the angles and the directions of the branches are chosen randomly basing the decision on a user defined *random seed* (so that it is possible to reproduce the same pseudo-random tree).
 
 ## Inspector (Origin GameObject)
+Currently the inspector you see in the .gif files is outdated, there are some new functionalities that has been added, like :
+* Random seed
+* Roots sets
+
+![text](/gifs/inspector.png)
+
 ### Changing sets
 There are four predefined models (or sets) to use, they are editable only if the "**Free Editing**" flag is checked, otherwise they won't change (and will be restored to the precedent model/set whenever you will click on something else).
 * Now there are present also two models for the roots.
@@ -76,3 +81,13 @@ Without checking this flag is not possible to make the "real-time" editing of th
 In the Hierarchy panel the items are organized in a tree structure way, where the origin contains the whole tree subdivided in two children between **branches** and  **roots**. This two objects respectively contains all generated branches and roots as children, with the main difference given by the fact that some of the branches got leaves, and those are children of the terminal branches.
 
 ![text](gifs/Hierarchy.gif)
+
+# Bugs & Possible features
+Bugs:
+* Handle better the swap between the free edit and the predefined samples
+
+Possible features:
+* Add fruits
+* New grammars
+* Try with more than one rule
+* Enables/disables the randomness.

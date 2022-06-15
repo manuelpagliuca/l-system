@@ -60,11 +60,11 @@ public class LSystemGenerator : MonoBehaviour
     // Persistence of general purpose data about the tree
     private struct LSystemBufferedData
     {
-        public string treeSet, rootSet;
+        public string treeModel, rootModel;
         public int iterations;
         public int seed;
         public float initialLength;
-       public GameObject branch, leaf;
+        public GameObject branch, leaf;
     };
     LSystemBufferedData bufferedData;
 
@@ -98,7 +98,7 @@ public class LSystemGenerator : MonoBehaviour
     // Gameobject nodes for the branches and root lists
     private GameObject nodeBranches;
     private GameObject nodeRoots;
-    
+
 
     /* Function executed before the Start(), it sets the deriver and
      * it created the main nodes for the branches and the roots. */
@@ -123,13 +123,7 @@ public class LSystemGenerator : MonoBehaviour
      * check the results dynamically).*/
     private void Update()
     {
-        if (!freeEditing)
-        {
-            SelectPredefinedTree();
-            SelectPredefinedRoot();
-        }
-
-        if (CheckChangesInParams())
+        if (CheckInspectorChanges())
         {
             DestroyTree();
             branches.Clear();
@@ -137,6 +131,12 @@ public class LSystemGenerator : MonoBehaviour
             ResetOriginPosition();
             Start();
             Random.InitState(bufferedData.seed);
+        }
+
+        if (!freeEditing)
+        {
+            SelectPredefinedTree();
+            SelectPredefinedRoot();
         }
     }
 
@@ -147,7 +147,7 @@ public class LSystemGenerator : MonoBehaviour
         Random.InitState(seed);
 
         // Initialize the data structures
-        treeRules = new Dictionary<char, string> { { AXIOM, bufferedData.treeSet } };
+        treeRules = new Dictionary<char, string> { { AXIOM, bufferedData.treeModel } };
         rootsRules = new Dictionary<char, string> { { AXIOM, rootModel } };
 
         RendererWidths initWidths = new RendererWidths();
@@ -173,8 +173,8 @@ public class LSystemGenerator : MonoBehaviour
     // It saves the data from the actual state for then next.
     private void BufferLSData()
     {
-        bufferedData.treeSet = treeModel;
-        bufferedData.rootSet = rootModel;
+        bufferedData.treeModel = treeModel;
+        bufferedData.rootModel = rootModel;
         bufferedData.iterations = treeIterations;
         bufferedData.initialLength = initialLength;
         bufferedData.branch = branch;
@@ -370,10 +370,9 @@ public class LSystemGenerator : MonoBehaviour
         return new Vector3(0.0f, 0.0f, 10.0f);
     }
 
-    private bool CheckChangesInParams()
+    private bool CheckInspectorChanges()
     {
-        return treeModel != bufferedData.treeSet ||
-                rootModel != bufferedData.rootSet ||
+        return CheckChangesInModels() ||
                 treeIterations != bufferedData.iterations ||
                 initialLength != bufferedData.initialLength ||
                 branch != bufferedData.branch ||
@@ -381,11 +380,24 @@ public class LSystemGenerator : MonoBehaviour
                 seed != bufferedData.seed;
     }
 
+    private bool CheckChangesInModels()
+    {
+        if (treeModel != bufferedData.treeModel || rootModel != bufferedData.rootModel)
+        {
+
+            return true;
+        }
+        return false;
+    }
+
     private void SelectPredefinedTree()
     {
+        string choice = string.Empty;
+
         switch (treePredefinedSets)
         {
             case StartingTreeSet.First:
+
                 treeModel = treePredefinedModels[0];
                 break;
 
