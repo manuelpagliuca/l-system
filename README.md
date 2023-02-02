@@ -8,10 +8,10 @@ This is a project for the course of A.I. for VideoGames at University of Milan, 
 The aim of the project is to implement a Lindenmayer system for procedural generation of tree using discrete distributions (pseudo-random integers) for enhancing the believability of the project.
 
 ### Introduction to L-systems
-The Lindenmayer system were introduced and developed in 1968 (University of Utrecht) from Aristid Lindenmayer,an Hungarian theoretical biologist and botanist.
+The Lindenmayer system were introduced and developed in 1968 (University of Utrecht) from Aristid Lindenmayer, an Hungarian theoretical biologist and botanist.
 A Lindenmayer system is a parallel *rewriting system* and a type of **formal grammar**. It is composed by :
 - Axiom symbol, from which to begin the construction.
-- Alphabet of symbols,
+- Alphabet of symbols.
 - Collection of production rules that expands each symbol into a larger one (*rewriting system*).
 
 This kind of system was used by his creator for describing the behavior of plant and cells to model the growth processes of plan development. L-system can be used also to generate self-similar *fractals*, this due to the structure of the rules that leads to **self-similarity** and thereby, fractal-like forms.
@@ -40,7 +40,7 @@ Once the project is opened in Unity, you have to open the scene in `Assets/Scene
 
 By pressing the Play button, you will be enabled to run the *MainScene* and move freely from a first person
 point of view. You will be able to move your position as The in-game usable hotkeys are the following :
-- The W,A,S,D keys for step into the forward, left, right and backward direction.
+- The W, A, S, D keys for step into the forward, left, right and backward direction.
 - With CTRL you move upward (on the positive Z axis).
 - With the space bar you move downward (on the negative Z axis).
 - With SHIFT you can speed up the movement into the directions.
