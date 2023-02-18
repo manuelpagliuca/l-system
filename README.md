@@ -3,6 +3,7 @@
 ![Unity](https://img.shields.io/badge/license-MIT-yellowgreen)
 ![Unity](https://img.shields.io/badge/version-v1.5-blue)
 ![Unity](https://img.shields.io/badge/language-C%23-brightgreen)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](mailto:pagliuca.manuel@gmail.com) 
 ## About the project
 This is a project for the course of A.I. for VideoGames at University of Milan, A.Y. 2021/2022.
 The aim of the project is to implement a Lindenmayer system for procedural generation of tree using discrete distributions (pseudo-random integers) for enhancing the believability of the project.
